@@ -15,7 +15,7 @@ function Experience() {
       <Particle />
       <Container>
         <h1 className="project-heading">
-          My <strong className="purple">Education </strong>
+          My <strong className="main-name">Education </strong>
         </h1>
 
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
@@ -43,7 +43,7 @@ function Experience() {
         </Row>
 
         <h1 className="project-heading">
-          My <strong className="purple">Work </strong>
+          My <strong className="main-name">Work </strong>
         </h1>
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
           <Col md={4} className="project-card">
@@ -58,7 +58,7 @@ function Experience() {
         </Row>
         
         <h1 className="project-heading">
-          My <strong className="purple">Co-Curriculars </strong>
+          My <strong className="main-name">Co-Curriculars </strong>
         </h1>
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
           <Col md={4} className="project-card">
