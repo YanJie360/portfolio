@@ -1,63 +1,77 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row } from "react-bootstrap";
+import { Container, Row, Col, Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Particle from "../Particle";
-import cl_pdf from "../../Assets/../Assets/LIAUWYANJIE_CHINESE CV.pdf";
-import en_pdf from "../../Assets/../Assets/LIAUWYANJIE_Eng CV.pdf";
-import { AiOutlineDownload } from "react-icons/ai";
-import { Document, Page, pdfjs } from "react-pdf";
-import "react-pdf/dist/esm/Page/AnnotationLayer.css";
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+
+import { AiOutlineDownload, AiOutlineMail, AiOutlinePhone, AiFillGithub } from "react-icons/ai";
+import { FaLinkedinIn } from "react-icons/fa";
 
 function Contact() {
-  const [width, setWidth] = useState(1200);
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [submitted, setSubmitted] = useState(false);
 
-  useEffect(() => {
-    setWidth(window.innerWidth);
-  }, []);
+  useEffect(() => {}, []);
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setForm((s) => ({ ...s, [name]: value }));
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const subject = encodeURIComponent(`Contact from ${form.name || "website visitor"}`);
+    const body = encodeURIComponent(
+      `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
+    );
+    window.location.href = `mailto:yanjieliauw@gmail.com?subject=${subject}&body=${body}`;
+    setSubmitted(true);
+  }
 
   return (
-    <div>
-      <Container fluid className="resume-section">
-        <Particle />
-        <Row style={{ justifyContent: "center", position: "relative" }}>
-          <Button
-            variant="primary"
-            href={cl_pdf}
-            target="_blank"
-            style={{ maxWidth: "250px" }}
-          >
-            <AiOutlineDownload />
-            &nbsp;Download Chinese CV
-          </Button>
-        </Row>
+    <Container fluid className="contact-section">
+      <Particle />
+      <Row style={{ paddingTop: "60px", paddingBottom: "40px", justifyContent: "center" }}>
+        <Col md={6} className="contact-form-col">
+          <h2 className="section-heading">Contact Me</h2>
+          <p className="section-sub">Have a question or want to work together? Send me a message.</p>
 
-        <Row className="resume">
-          <Document file={cl_pdf} className="d-flex justify-content-center">
-            <Page pageNumber={1} scale={width > 786 ? 1.7 : 0.6} />
-          </Document>
-        </Row>
+          <Form onSubmit={handleSubmit} className="contact-form">
+            <Form.Group controlId="contactName" className="mb-3">
+              <Form.Label>Name</Form.Label>
+              <Form.Control type="text" name="name" value={form.name} onChange={handleChange} placeholder="Your name" required />
+            </Form.Group>
 
-        <Row style={{ justifyContent: "center", position: "relative" }}>
-          <Button
-            variant="primary"
-            href={en_pdf}
-            target="_blank"
-            style={{ maxWidth: "250px" }}
-          >
-            <AiOutlineDownload />
-            &nbsp;Download English CV
-          </Button>
-        </Row>
+            <Form.Group controlId="contactEmail" className="mb-3">
+              <Form.Label>Email</Form.Label>
+              <Form.Control type="email" name="email" value={form.email} onChange={handleChange} placeholder="your@email.com" required />
+            </Form.Group>
 
-        <Row className="resume">
-          <Document file={en_pdf} className="d-flex justify-content-center">
-            <Page pageNumber={1} scale={width > 786 ? 1.7 : 0.6} />
-          </Document>
-        </Row>
+            <Form.Group controlId="contactMessage" className="mb-3">
+              <Form.Label>Message</Form.Label>
+              <Form.Control as="textarea" rows={6} name="message" value={form.message} onChange={handleChange} placeholder="Write your message..." required />
+            </Form.Group>
 
-      </Container>
-    </div>
+            <div className="d-flex gap-2">
+              <Button type="submit" variant="primary">Send Message</Button>
+            </div>
+
+            {submitted && <p className="mt-3 text-muted">Opening your email client…</p>}
+          </Form>
+        </Col>
+      </Row>
+
+      <Row style={{ paddingBottom: "40px" }}>
+          <h3 className="info-title">Get in touch</h3>
+          <p className="info-item"><AiOutlineMail />&nbsp; yanjieliauw@gmail.com</p>
+          <p className="info-item"><AiOutlinePhone />&nbsp; +65 9689 6826</p>
+
+          <div className="social-links" style={{ marginTop: 20 }}>
+            <a href="https://github.com/yanjie360" aria-label="GitHub" target="_blank" rel="noreferrer"><AiFillGithub className="social-icon" /></a>
+            <a href="https://www.linkedin.com/in/yanjieliauw/" aria-label="LinkedIn" target="_blank" rel="noreferrer"><FaLinkedinIn className="social-icon" /></a>
+          </div>
+
+      </Row>
+    </Container>
   );
 }
 

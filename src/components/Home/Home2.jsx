@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import myImg from "../../Assets/avatar.svg";
+import myImg from "../../Assets/avatar.png";
 import Tilt from "react-parallax-tilt";
 
 function Home2() {
@@ -10,10 +10,10 @@ function Home2() {
         <Row>
           <Col md={8} className="home-about-description">
             <h1 style={{ fontSize: "2.6em" }}>
-              LET ME <span className="purple"> INTRODUCE </span> MYSELF
+              LET ME <span className="main-name"> INTRODUCE </span> MYSELF
             </h1>
             <p className="home-about-body">
-              I’m a Cybersecurity and Digital Forensics diploma student with an interest in Purple Teaming activities like <b className="purple">
+              I’m a Cybersecurity and Digital Forensics diploma student with an interest in Purple Teaming activities like <b className="main-name">
                   {" "}
                   firewall configuration, penetration testing, and incident response{""}
                 </b>.
@@ -21,7 +21,7 @@ function Home2() {
               <br />
               I’m proficient in
               <i>
-                <b className="purple">
+                <b className="main-name">
                   {" "}
                   Python, C#, Networking, Windows, and Linux{" "}
                 </b>

@@ -651,6 +651,53 @@ button:focus {
   color: rgb(var(--muted)) !important;
 }
 
+/* Contact page styles */
+.contact-section {
+  position: relative !important;
+  padding-top: 80px !important;
+  padding-bottom: 80px !important;
+  background-image: none !important;
+  background-color: rgb(7,19,48) !important;
+  color: rgb(var(--muted)) !important;
+}
+
+.contact-form-col {
+  padding: 2rem 3rem;
+}
+.contact-info-col {
+  padding: 2rem 3rem;
+}
+.section-heading {
+  font-size: 2.2rem;
+  margin-bottom: 0.2rem;
+  color: rgb(var(--muted));
+}
+.section-sub {
+  color: rgba(var(--muted), 0.9);
+  margin-bottom: 1rem;
+}
+.contact-form .form-control {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  color: rgb(var(--muted));
+}
+.contact-form .form-control::placeholder{
+  color: rgba(var(--muted),0.6);
+}
+.info-title {
+  color: rgb(var(--muted));
+}
+.info-item {
+  color: rgba(var(--muted),0.9);
+  margin-bottom: 0.75rem;
+  font-size: 1.05rem;
+}
+.social-links .social-icon {
+  font-size: 1.6rem;
+  margin-right: 1rem;
+  color: rgb(var(--muted));
+}
+
 .resume {
   padding-top: 50px;
   padding-bottom: 50px;
