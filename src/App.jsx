@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 import Resume from "./components/Resume/Resume";
 import Contact from "./components/Contact/Contact";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
   Routes,
   Navigate
@@ -43,7 +43,7 @@ function App() {
           <Route path="/experience" element={<Experience />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<Navigate to="/"/>} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         <Footer />
       </div>
